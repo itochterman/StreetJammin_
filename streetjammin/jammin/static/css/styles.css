@@ -5,7 +5,12 @@ h1 a{
 }
 
 .mainTitle{
-    color: blue;
+    color: purple;
     font-size: 50px;
     padding-left: 300px;
+    font-family: 'Lobster';
+
+}
+.kyle{
+   padding-left: 450px;
 }
