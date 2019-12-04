@@ -13,12 +13,14 @@
             background-color: burlywood
         }  
     </style>
-  
-    <h1><a>{{ title }}</a></h1>
 
+
+    <button class = "btn"><a href="{% url 'login' %}"> Login </a></button> 
+
+    <h1><a>{{ title }}</a></h1>
     <div class = "kyle"><img src="{% static 'images/kyle.png' %}" alt="My image"/>
      </div>
     <div class = "mainTitle">
          <p>{{ contributors }}</p>
-      </div>
+    </div>
  </html>

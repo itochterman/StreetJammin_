@@ -1,11 +1,31 @@
 h1 a{
-    color: palevioletred;
+    color: white;
     padding-left: 300px;
     font-size: 100px; 
 }
+.btn{
+    background-color: green !important; /* Green */
+    font-size: 24px;
+    color: white !important;
+    border-radius: 25px;
+    width: 100px;
+    height: 50px; 
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+    border: 1px solid transparent;
+
+
+}
+
+button a:hover{
+    border: 1px solid green
+}
 
 .mainTitle{
-    color: purple;
+    color: white;
     font-size: 50px;
     padding-left: 300px;
     font-family: 'Lobster';
