@@ -1,5 +1,29 @@
 {% load static %}
-<div class = "login">
+<style>
+ body{
+    background-color: green;
+  }
+  h2{
+    text-align: center;
+    color: white;
+  }
+  form {
+    background-color: white;
+    padding: 15px;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    width: 500px;
+    margin: 0 auto;
+  }
+  button{
+    color: green;
+    position: absolute;
+    left: 51%;
+    margin-left: -50px;
+
+  }
+</style>
+<div class = "form">
   <h2>Login</h2>
   <form method="post">
     {% csrf_token %}
