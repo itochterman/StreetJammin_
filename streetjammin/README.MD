@@ -1,4 +1,4 @@
-Setting up Django to be connected to 2 databases
+Setting up Django to be connected to 1 database 
 
 
 -------------- How to modify global_settings in Django-------------- 
@@ -15,18 +15,7 @@ Do 2 modifications:
 To modify DATABASE, apply below changes: 
 
 DATABASES = {
-    'default':{},       #note: Django requires a default DB be included;   
-                        #suggested by official docs to just keep this blank if we dont have a 'default' db
-    'others': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'others',
-        'USER': 'main_user',       
-        'PASSWORD': 'password',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    },
-
-    'songs':{
+    'default':{
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'songs',
         'USER': 'main_user',       
