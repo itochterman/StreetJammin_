@@ -44,7 +44,7 @@ Now, you're in (venv)Streetjammin. Ready to create DBs
 sudo -u yumiobuchi psql postgres
 
 6. run this command to create all necessary db & tables
-\i init_6.sql
+\i init_7.sql
 
 4. finally, connect to Django: 
 python manage.py migrate
