@@ -1,0 +1,46 @@
+h1 a{
+    color: white;
+    padding-left: 300px;
+    font-size: 100px; 
+}
+h2 a{
+    padding-left: 300px;
+}
+.authflow{
+    padding-left: 300px;
+
+}
+
+.btn{
+    background-color: green !important; /* Green */
+    font-size: 24px;
+    color: white !important;
+    border-radius: 25px;
+    width: 100px;
+    height: 50px; 
+}
+.signup-container{
+    text-align: center; 
+}
+.inner-signup{
+    display: inline-block;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+    border: 1px solid transparent;
+}
+button a:hover{
+    border: 1px solid green
+}
+.mainTitle{
+    color: white;
+    font-size: 50px;
+    padding-left: 300px;
+    font-family: 'Lobster';
+
+}
+.kyle{
+   padding-left: 450px;
+}
