@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.shortcuts import redirect
-from django.shortcuts import render_to_response
 # from .models import Musician << this is how we import models
 
 # Create your views here.
@@ -32,4 +31,4 @@ def mySongs(request):
         list = {
             "songs": data
         }
-        return render_to_response('basic_templates/list.html', list)
+        return render('basic_templates/list.html', list)
