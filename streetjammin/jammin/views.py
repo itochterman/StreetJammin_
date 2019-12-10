@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.shortcuts import redirect
+from .models import Songs
 # from .models import Musician << this is how we import models
 
 # Create your views here.
