@@ -40,7 +40,7 @@ def uploadSongs(request):
                 return HttpResponseRedirect('/list')
           else:
             form = SongUploadForm()
-          return render(request, 'basic_templates/uploads.html', {'form': form})
+            return render(request, 'basic_templates/uploads.html', {'form': form})
 
 def mySongs(request):
     if not request.user.is_authenticated:
