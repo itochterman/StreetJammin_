@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.shortcuts import redirect
 from .models import Songs
+from django.contrib.auth import logout
 # from .models import Musician << this is how we import models
 
 # Create your views here.
@@ -38,3 +39,7 @@ def mySongs(request):
             "songs": data
         }
         return render(request, 'basic_templates/list.html', list)
+
+def logout_view(request):
+    logout(request)
+    return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
