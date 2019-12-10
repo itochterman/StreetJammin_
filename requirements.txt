@@ -7,6 +7,7 @@ cryptography==2.8
 Django==2.1.7
 idna==2.8
 mysql-connector==2.2.9
+mysqlclient==1.4.6
 pycparser==2.19
 PyJWT==1.7.1
 PyMySQL==0.9.3
@@ -17,3 +18,5 @@ six==1.13.0
 sqlparse==0.3.0
 urllib3==1.24.3
 virtualenv==16.7.8
+
+

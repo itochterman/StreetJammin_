@@ -21,4 +21,3 @@ fi
 
 
 mysql -u root -p < ${sql_file}
-done
