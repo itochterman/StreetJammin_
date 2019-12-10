@@ -30,7 +30,6 @@ def uploadSongs(request):
         if request.method == 'POST':
             form = SongUploadForm(request.POST, request.FILES)
             if form.is_valid():
-
               song_name = form.cleaned_data['name']
               song_address = 'jammin/media/' + song_name + '.mp3'
               with open(song_address, 'wb+' ) as destination:
@@ -38,7 +37,7 @@ def uploadSongs(request):
                   destination.write(chunk)
                 song = Songs.objects.create(mid=321, sid=456, name=song_name, song_file=song_address)
                 return HttpResponseRedirect('/list')
-          else:
+        else:
             form = SongUploadForm()
             return render(request, 'basic_templates/uploads.html', {'form': form})
 
