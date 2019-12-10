@@ -9,7 +9,7 @@ def index(request):
         # musician = Musician.objects.create(mid = 3, username = "bob") <<<< this is a test (it works)
         return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
     else:
-        return render_to_response('basic_templates/list.html', list)
+        return render('basic_templates/list.html', list)
 def login(request):
     return render(request, 'basic_templates/registration/login')
 
