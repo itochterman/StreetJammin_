@@ -27,7 +27,20 @@ def uploadSongs(request):
     if not request.user.is_authenticated:
         return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
     else:
-        return render(request, 'basic_templates/uploads.html')
+        if request.method == 'POST':
+            form = SongUploadForm(request.POST, request.FILES)
+            if form.is_valid():
+
+              song_name = form.cleaned_data['name']
+              song_address = 'jammin/media/' + song_name + '.mp3'
+              with open(song_address, 'wb+' ) as destination:
+                for chunk in request.FILES['song_file'].chunks():
+                  destination.write(chunk)
+                song = Songs.objects.create(mid=321, sid=456, name=song_name, song_file=song_address)
+                return HttpResponseRedirect('/list')
+          else:
+            form = SongUploadForm()
+          return render(request, 'basic_templates/uploads.html', {'form': form})
 
 def mySongs(request):
     if not request.user.is_authenticated:
