@@ -11,3 +11,6 @@ def login(request):
 
 def signup(request):
     return render(request, 'basic_templates/registration/signup')
+
+def uploadSongs(request):
+    return render(request, 'basic_templates/upload.html')
