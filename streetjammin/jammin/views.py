@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import redirect
 from .models import Songs, Musicians, Downloads, SongUploadForm
 from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
 # from .models import Musician << this is how we import models
 
 # Create your views here.
