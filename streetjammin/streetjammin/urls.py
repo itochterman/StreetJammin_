@@ -23,6 +23,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/login/', views.login, name="login"),
+    path('musician/<username>/home', views.home, name="musician-landing"), #######
     path('accounts/signup/', views.signup, name="signup"),
-    path('upload/', views.upload, name="upload"),
+    path('musician/<username>/upload/', views.upload, name="musician-upload"), #########added depth: musician/<username>/upload
 ]
