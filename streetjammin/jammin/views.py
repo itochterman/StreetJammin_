@@ -1,5 +1,7 @@
 from django.shortcuts import render
-# from .models import Musician << this is how we import models 
+from django.conf import settings
+from django.shortcuts import redirect
+# from .models import Musician << this is how we import models
 
 # Create your views here.
 def index(request):
@@ -13,4 +15,18 @@ def signup(request):
     return render(request, 'basic_templates/registration/signup')
 
 def uploadSongs(request):
-    return render(request, 'basic_templates/upload.html')
+    if not request.user.is_authenticated:
+        return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
+    else:
+        return render(request, 'basic_templates/list.html')
+
+def mySongs(request):
+    if not request.user.is_authenticated:
+        return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
+    else:
+        data = Songs.objects.all()
+
+        list = {
+            "songs": data
+        }
+        return render_to_response('basic_templates/list.html', list)
