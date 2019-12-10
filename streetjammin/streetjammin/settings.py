@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'streetjammin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jamminDB',
+        'NAME': 'jammin_db',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'password',
         'HOST': '',
         'PORT': '',
 
