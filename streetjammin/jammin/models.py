@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
 # can test inside: inside venv, use python3 manage.py shell
@@ -24,12 +25,13 @@ class Songs(models.Model):
   created = models.DateTimeField(default=timezone.now)
   dl_count = models.PositiveIntegerField(default = 0)
   last_dl = models.DateTimeField(auto_now=True)
+  song_file = models.FileField(default = "jammin/media")
 
 
   class Meta:
     unique_together = (('mid','sid'),) #logically, Songs are nested under Musicians
 
-  def __str__(self):     
+  def __str__(self):
     return "("+str(self.mid) + "," + str(self.sid) +"):"+self.name
 
   def created_at(self):
@@ -53,3 +55,7 @@ class Downloads(models.Model):
 
   def downloaded_or_not(self):
     return self.state
+
+class SongUploadForm(forms.Form):
+  name = forms.CharField(label='Song Name', max_length=50)
+  song_file = forms.FileField(label='Song File')

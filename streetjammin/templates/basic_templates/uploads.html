@@ -45,6 +45,9 @@
            <li class="nav-item px-lg-4">
              <a class="nav-link text-uppercase text-expanded" href="{% url 'list' %}"> My Songs </a>
            </li>
+           <li class="nav-item px-lg-4">
+             <a class="nav-link text-uppercase text-expanded" href="{% url 'logout' %}"> Logout </a>
+           </li>
          </ul>
 
        </div>
@@ -62,7 +65,11 @@
                <div class="bg-faded rounded p-5">
                  <h1><a>Upload</a></h1>
                  <div class = "mainTitle">
-                      <p>TODO</p>
+                   <form action="/upload/" method="post" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     {{ form }}
+                     <input type="submit" value="Submit" />
+                   </form>
                  </div>
                </div>
              </div>
