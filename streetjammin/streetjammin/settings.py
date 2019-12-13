@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'jammin',
     'accounts.apps.AccountsConfig',
+    'qr_code'
 ]
 
 MIDDLEWARE = [
