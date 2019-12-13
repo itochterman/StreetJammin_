@@ -56,3 +56,13 @@ def mySongs(request):
 def logout_view(request):
     logout(request)
     return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
+
+def qrcode(request, sid):
+    if not request.user.is_authenticated:
+        return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
+    else:
+        song = Songs.objects.get(sid=sid)
+        download = Downloads.objects.create(sid=song.sid, mid=song.mid)
+        download_uri = request.build_absolute_uri('/download/' + str(download.did) + '/')
+
+        return render(request, 'basic_templates/qrcode.html', { "song": song, "download_uri": download_uri })

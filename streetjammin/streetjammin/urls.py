@@ -14,7 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from django.conf.urls import include, url
+from qr_code import urls as qr_code_urls
 from jammin import views
 
 urlpatterns = [
@@ -27,5 +29,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('accounts/login/', views.login, name="login"),
     path('accounts/signup/', views.signup, name="signup"),
-
+    path('qrcode_generator/song<int:sid>', views.qrcode, name="qrcode_generator"),
+    url(r'^qr_code/', include(qr_code_urls, namespace="qr_code")),
 ]
