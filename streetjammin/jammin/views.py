@@ -34,10 +34,11 @@ def uploadSongs(request):
             if form.is_valid():
               song_name = form.cleaned_data['name']
               song_address = 'jammin/media/' + song_name + '.mp3'
+              unique_num=uuid.uuid4()
               with open(song_address, 'wb+' ) as destination:
                 for chunk in request.FILES['song_file'].chunks():
                   destination.write(chunk)
-                song = Songs.objects.create(mid=uuid.uuid4, name=song_name, song_file=song_address)
+                song = Songs.objects.create(mid=unique_num, name=song_name, song_file=song_address)
                 return HttpResponseRedirect('/list')
         else:
             form = SongUploadForm()
