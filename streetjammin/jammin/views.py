@@ -36,7 +36,7 @@ def uploadSongs(request):
               with open(song_address, 'wb+' ) as destination:
                 for chunk in request.FILES['song_file'].chunks():
                   destination.write(chunk)
-                song = Songs.objects.create(mid=717, name=song_name, song_file=song_address)
+                song = Songs.objects.create(mid=800, sid=456, name=song_name, song_file=song_address)
                 return HttpResponseRedirect('/list')
         else:
             form = SongUploadForm()
@@ -56,13 +56,3 @@ def mySongs(request):
 def logout_view(request):
     logout(request)
     return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
-
-def qrcode(request, sid):
-    if not request.user.is_authenticated:
-        return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
-    else:
-        song = Songs.objects.get(sid=sid)
-        download = Downloads.objects.create(sid=song.sid, mid=song.mid)
-        download_uri = request.build_absolute_uri('/download/' + str(download.did) + '/')
-
-        return render(request, 'basic_templates/qrcode.html', { "song": song, "download_uri": download_uri })
