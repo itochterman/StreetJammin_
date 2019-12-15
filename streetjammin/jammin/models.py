@@ -19,7 +19,7 @@ class Musicians(models.Model):
     return "("+str(self.mid)+"):"+self.username
 
 class Songs(models.Model):
-  mid = models.CharField(unique = True)
+  mid = models.CharField(max_length=50, unique = True)
   sid = models.AutoField(primary_key=True)
   name = models.CharField(max_length=30, unique = True)
   created = models.DateTimeField(default=timezone.now)
