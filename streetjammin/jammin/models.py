@@ -59,3 +59,5 @@ class Downloads(models.Model):
 class SongUploadForm(forms.Form):
   name = forms.CharField(label='Song Name', max_length=50)
   song_file = forms.FileField(label='Song File')
+
+post_delete.connect(file_cleanup, sender=Image, dispatch_uid="gallery.image.file_cleanup")
