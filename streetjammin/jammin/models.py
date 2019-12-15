@@ -13,14 +13,14 @@ from django.contrib.auth.models import User
 import datetime
 
 class Musicians(models.Model):
-  mid = models.AutoField(primary_key=True)
+  mid = models.BigIntegerField(primary_key=True)
   username = models.CharField(max_length=30, unique = True)
   def __str__(self):
     return "("+str(self.mid)+"):"+self.username
 
 class Songs(models.Model):
-  mid = models.CharField(max_length=50, unique = True)
-  sid = models.AutoField(primary_key=True)
+  mid = models.BigIntegerField(primary_key=True)
+  sid = models.BigIntegerField()
   name = models.CharField(max_length=30, unique = True)
   created = models.DateTimeField(default=timezone.now)
   dl_count = models.PositiveIntegerField(default = 0)
@@ -42,8 +42,8 @@ class Songs(models.Model):
 
 
 class Downloads(models.Model):
-  sid = models.BigIntegerField()
-  did = models.AutoField(primary_key = True)
+  sid = models.BigIntegerField(primary_key = True)
+  did = models.BigIntegerField()
   mid = models.BigIntegerField()
   state = models.BooleanField(default = False) # False = Not downloaded; True = Downloaded
 
