@@ -1,6 +1,7 @@
 from django.db import models
 from django import forms
-
+from django.db.models.signals import post_delete
+from .utils import file_cleanup
 # Create your models here.
 # can test inside: inside venv, use python3 manage.py shell
 
