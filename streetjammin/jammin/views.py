@@ -36,7 +36,7 @@ def uploadSongs(request):
               with open(song_address, 'wb+' ) as destination:
                 for chunk in request.FILES['song_file'].chunks():
                   destination.write(chunk)
-                song = Songs.objects.create(mid=717, name=song_name, song_file=song_address)
+                song = Songs.objects.create(mid=request.user.id, name=song_name, song_file=song_address)
                 return HttpResponseRedirect('/list')
         else:
             form = SongUploadForm()
@@ -46,7 +46,7 @@ def mySongs(request):
     if not request.user.is_authenticated:
         return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
     else:
-        data = Songs.objects.all()
+        data = Songs.objects.filter(mid=request.user.id)
 
         list = {
             "songs": data
