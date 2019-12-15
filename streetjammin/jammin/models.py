@@ -19,8 +19,8 @@ class Musicians(models.Model):
     return "("+str(self.mid)+"):"+self.username
 
 class Songs(models.Model):
-  mid = models.BigIntegerField()
-  sid = models.AutoField(primary_key=True)
+  mid = models.CharField(unique = True),
+  sid = models.AutoField(primary_key=True),
   name = models.CharField(max_length=30, unique = True)
   created = models.DateTimeField(default=timezone.now)
   dl_count = models.PositiveIntegerField(default = 0)
