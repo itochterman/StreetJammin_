@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from .models import Songs, Musicians, Downloads, SongUploadForm
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
+import uuid
 # from .models import Musician << this is how we import models
 
 # Create your views here.
@@ -36,7 +37,7 @@ def uploadSongs(request):
               with open(song_address, 'wb+' ) as destination:
                 for chunk in request.FILES['song_file'].chunks():
                   destination.write(chunk)
-                song = Songs.objects.create(mid=717, name=song_name, song_file=song_address)
+                song = Songs.objects.create(mid=uuid.uuid4, name=song_name, song_file=song_address)
                 return HttpResponseRedirect('/list')
         else:
             form = SongUploadForm()
