@@ -36,7 +36,7 @@ def uploadSongs(request):
               with open(song_address, 'wb+' ) as destination:
                 for chunk in request.FILES['song_file'].chunks():
                   destination.write(chunk)
-                song = Songs.objects.create(mid=800, sid=456, name=song_name, song_file=song_address)
+                song = Songs.objects.create(mid=800, sid=500, name=song_name, song_file=song_address)
                 return HttpResponseRedirect('/list')
         else:
             form = SongUploadForm()
