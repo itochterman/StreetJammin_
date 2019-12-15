@@ -25,7 +25,7 @@ SECRET_KEY = '=9k2vds-($sal080zvl4@l5l4b)*!8a=%6u88zae88d&3l@aj+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["34.66.115.196", "127.0.0.1"]
+ALLOWED_HOSTS = ["34.66.115.196", "127.0.0.1", ".ngrok.io"]
 
 
 # Application definition
@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'streetjammin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jammin_db',
+        'NAME': 'jamminDB',
         'USER': 'root',
-        'PASSWORD': 'password',
+        'PASSWORD': '',
         'HOST': '',
         'PORT': '',
 
@@ -128,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR
+MEDIA_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

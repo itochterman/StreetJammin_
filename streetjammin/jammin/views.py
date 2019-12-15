@@ -1,23 +1,15 @@
+import os
 from django.shortcuts import render
 from django.conf import settings
 from django.shortcuts import redirect
 from .models import Songs, Musicians, Downloads, SongUploadForm
 from django.contrib.auth import logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 # from .models import Musician << this is how we import models
 
 # Create your views here.
 def index(request):
-    if not request.user.is_authenticated:
-        # musician = Musician.objects.create(mid = 3, username = "bob") <<<< this is a test (it works)
-        return render(request, 'basic_templates/index.html', {'title': "StreetJammin", 'contributors': "By Yumi, Alice, Jamie and Bella"})
-    else:
-        data = Songs.objects.all()
-
-        list = {
-            "songs": data
-        }
-        return render(request, 'basic_templates/list.html', list)
+    return mySongs(request)
 def login(request):
     return render(request, 'basic_templates/registration/login')
 
@@ -66,3 +58,18 @@ def qrcode(request, sid):
         download_uri = request.build_absolute_uri('/download/' + str(download.did) + '/')
 
         return render(request, 'basic_templates/qrcode.html', { "song": song, "download_uri": download_uri })
+
+def download(request, did):
+    download = Downloads.objects.filter(did=did).first()
+    if download is None:
+        raise Http404
+    if download.downloaded_or_not():
+        return HttpResponse("Sorry, this song has already been downloaded.")
+    song = Songs.objects.get(sid=download.sid)
+    with song.song_file.open() as file_download:
+        response = HttpResponse(file_download.read(), content_type="audio/mpeg")
+        response['Content-Disposition'] = 'attachment; filename=' + song.name + ".mp3"
+        download.state = True
+        download.save(force_update=True)
+        return response
+    raise Http404

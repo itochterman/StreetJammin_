@@ -30,5 +30,6 @@ urlpatterns = [
     path('accounts/login/', views.login, name="login"),
     path('accounts/signup/', views.signup, name="signup"),
     path('qrcode_generator/song<int:sid>', views.qrcode, name="qrcode_generator"),
+    path('download/<int:did>/', views.download, name='download'),
     url(r'^qr_code/', include(qr_code_urls, namespace="qr_code")),
 ]
